@@ -19,6 +19,19 @@ bool paymentProcess(string cardNumber, double balance, double amount, bool accou
     cout << "Payment Successful\n";
     return true;
 }
+void completeTransaction(string customerName, string cardNumber, double amount) {
+    cout << "Customer: " << customerName << " charged $" << amount << endl;
+    cout << "Transaction Saved\n";
+    cout << "Statement Sent\n";
+
+    ofstream file("database.csv", ios::app);
+    if (file.is_open()) {
+        file << customerName << "," << cardNumber << "," << amount << "\n";
+        file.close();
+    } else {
+        cout << "Error opening database.csv\n";
+    }
+}
 
 int main() {
     string customerName, cardNumber;
