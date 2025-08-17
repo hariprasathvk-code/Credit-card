@@ -3,6 +3,22 @@
 #include <fstream>
 using namespace std;
 
+bool paymentProcess(string cardNumber, double balance, double amount, bool accountValid) {
+    if (cardNumber.length() != 16) {
+        cout << "Invalid Card\n";
+        return false;
+    }
+    if (balance < amount) {
+        cout << "Insufficient Funds\n";
+        return false;
+    }
+    if (!accountValid) {
+        cout << "Invalid Account\n";
+        return false;
+    }
+    cout << "Payment Successful\n";
+    return true;
+}
 
 int main() {
     string customerName, cardNumber;
